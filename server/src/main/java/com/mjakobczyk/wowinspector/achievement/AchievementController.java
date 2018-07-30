@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class AchievementController {
 
     @Autowired
-    AchievementService achievementService;
+    private AchievementService achievementService;
 
     @GetMapping("/achievement/{achievement_id}")
-    public ResponseEntity<AchievementOutputDTO> getAchievmentById(@PathVariable(value = "achievment_id") int achievementID) {
-        return ResponseEntity.status(HttpStatus.OK).body(achievementService.getAchievmentById(achievementID));
+    public ResponseEntity<AchievementOutputDTO> getAchievmentById(@PathVariable(value = "achievement_id") int achievementID) {
+        return ResponseEntity.status(HttpStatus.OK).body(achievementService.getAchievementByID(achievementID));
     }
 
 }
