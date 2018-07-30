@@ -1,4 +1,4 @@
-package com.mjakobczyk.server;
+package com.mjakobczyk.wowinspector;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
