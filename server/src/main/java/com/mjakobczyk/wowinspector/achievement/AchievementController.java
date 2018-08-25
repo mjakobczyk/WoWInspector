@@ -16,7 +16,7 @@ public class AchievementController {
     private AchievementService achievementService;
 
     @GetMapping("/achievement/{achievement_id}")
-    public ResponseEntity<AchievementOutputDTO> getAchievmentById(@PathVariable(value = "achievement_id") int achievementID) {
+    public ResponseEntity<AchievementOutputDTO> getAchievementById(@PathVariable(value = "achievement_id") int achievementID) {
         return ResponseEntity.status(HttpStatus.OK).body(achievementService.getAchievementByID(achievementID));
     }
 

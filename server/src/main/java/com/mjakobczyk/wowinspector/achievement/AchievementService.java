@@ -1,5 +1,6 @@
 package com.mjakobczyk.wowinspector.achievement;
 
+import com.mjakobczyk.wowinspector.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -10,20 +11,12 @@ import org.springframework.web.client.RestTemplate;
 public class AchievementService {
 
     @Value("${resource.achievement.endpoint}/{achievement_id}${resource.apikey}")
-    private String getAchievmentByIdResource;
+    private String getAchievementByIdResource;
 
+    @Autowired
     private RestTemplate restTemplate;
 
-    public AchievementOutputDTO getAchievementByID(@PathVariable(value = "achievement_id")
-                                                           int achievementID) {
-        System.out.println(getAchievmentByIdResource);
-
-        // Mock data fetched from the server
-        AchievementOutputDTO achievementOutputDTO = new AchievementOutputDTO();
-        achievementOutputDTO.setTitle("The Loremaster");
-        return achievementOutputDTO;
-//        return restTemplate.getForObject(getAchievmentByIdResource,
-//                AchievementOutputDTO.class,
-//                achievementID);
+    public AchievementOutputDTO getAchievementByID(int ID) throws ResourceNotFoundException {
+        return restTemplate.getForObject(getAchievementByIdResource, AchievementOutputDTO.class, ID);
     }
 }
